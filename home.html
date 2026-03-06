@@ -9,7 +9,67 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <h1 class="text-5xl">Umayer Ahmad</h1>
+<body class="bg-[#F8FAFC]">
+    <header class="">
+        <div class="navbar bg-base-100 shadow-sm px-10 grid grid-cols-1 gap-3 lg:gap-0 lg:flex">
+        <div class="flex justify-center lg:flex-1 lg:justify-start">
+            <a class="btn btn-ghost text-xl"><i class="fa-brands fa-github text-3xl"></i>GitHub Issues Tracker</a>
+        </div>
+        <div class="flex gap-3">
+            <label class="input input-bordered flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="grow" placeholder="Search issues..." />
+            </label>
+            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+        </div>
+        </div>
+    </header>
+
+    <section class="max-w-[80%] mx-auto bg-[#ffffff] rounded-xl mt-5 btn-container">
+        <div class="border p-3 space-x-1">
+            <button id="all-btn" class="btn btn-primary">All</button>
+            <button id="open" class="btn">Open</button>
+            <button id="close" class="btn">Closed</button>
+        </div>
+    </section>
+
+    <section>
+        <div class="max-w-[80%] mx-auto bg-[#ffffff] rounded-xl mt-5 border btn-container flex justify-between p-3">
+            <div class="flex justify-center items-center gap-2">
+                <img src="assets/Aperture.png" alt="">
+                <div>
+                    <h3 class="font-bold text-lg">50 Issues</h3>
+                    <p class="text-[14px] text-neutral/50">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-3">
+                <p><i class="fa-solid fa-circle text-green-600"></i>Open</p>
+                <p><i class="fa-solid fa-circle text-purple-600"></i>Closed</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-[80%] mx-auto">
+        <div class="grid grid-cols-4 gap-3 card p-4 bg-gray-400">
+            <!-- <div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg">
+                <div class="flex justify-between items-center">
+                    <img src="assets/Open-Status.png" alt="">
+                    <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]">HIGH</button>
+                </div>
+                <p class="font-semibold">Fix navigation menu on mobile devices</p>
+                <p class="line-clamp-2 text-neutral/50 text-[12px]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                <div>
+                    <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]"><i class="fa-solid fa-bug"></i>BUG</button>
+                    <button class="text-[#D97706] bg-[#FDE68A] px-4 rounded-full text-[12px]"><i class="fa-regular fa-life-ring"></i>HELP WANTED</button>
+                </div>
+                <hr class="text-gray-300">
+                <p class="text-neutral/50 text-[12px]">#1 by john_doe</p>
+                <p class="text-neutral/50 text-[12px]">1/15/2024</p>
+            </div> -->
+            
+        </div>
+    </section>
+
+    <script src="script2.js"></script>
 </body>
 </html>
