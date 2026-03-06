@@ -5,8 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    
+<body class="min-h-screen flex justify-center items-center max-w-md mx-auto">
+    <section class="bg-white w-full p-8 shadow-2xl rounded-2xl">
+        <header class="text-center mb-2">
+            <div class="text-7xl mb-2">
+                <i class="fa-brands fa-github w-4"></i>
+            </div>
+            <h2 class="text-2xl font-semibold">GitHub Issues Tracker</h2>
+            <p class="text-neutral/60">Sign in to manage your issues</p>
+        </header>
+        <main>
+            <fieldset class="fieldset rounded-box w-full">
+
+                <label class="label text-black font-semibold text-base">Username</label>
+                <input id="userInput" type="text" class="input w-full" placeholder="Enter Username" />
+                <p class="text-[#4A00FF]">Default: admin</p>
+
+                <label class="label text-black font-semibold text-base">Password</label>
+                <input id="passInput" type="password" class="input w-full" placeholder="Enter Password" />
+                <p class="text-[#4A00FF]">Default: admin123</p>
+
+                <button id="sign" class="btn btn-primary mt-2">Sign In</button>
+            </fieldset>
+        </main>
+        <div class="divider">OR</div>
+        <p class="text-center text-neutral/50 mb-1">Demo Credentials:</p>
+        <div class="bg-[#F8FAFC] text-center py-2 rounded-xl">
+            <p><span class="font-semibold">Username:</span> admin</p>
+            <p><span class="font-semibold">Password:</span> admin123</p>
+        </div>
+    </section>
+
+    <script src="script1.js"></script>
 </body>
 </html>
