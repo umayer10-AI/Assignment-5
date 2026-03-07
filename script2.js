@@ -84,7 +84,7 @@ const allBtncard = (v) => {
         if(x.status === "open"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5 h-full flex flex-col justify-between">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
@@ -102,7 +102,7 @@ const allBtncard = (v) => {
         else if(x.status === "closed"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5 h-full flex flex-col justify-between">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
@@ -226,6 +226,79 @@ const parmanentcards = (v) => {
         if(x.status === "open"){
             const p = pri(x.priority);
             const div = document.createElement("div");
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5 h-full flex flex-col justify-between">
+                    <div class="flex justify-between items-center">
+                        <img src="assets/Open-Status.png" alt="">
+                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px] s">${x.priority}</button>
+                    </div>
+                    <p class="font-semibold">${x.title}</p>
+                    <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
+                    <div>${add(x.labels)}</div>
+                    <hr class="text-gray-300">
+                    <p class="text-neutral/50 text-[12px]">${x.author}</p>
+                    <p class="text-neutral/50 text-[12px]">${x.createdAt}</p>
+                </div>`;
+
+            parentCard.appendChild(div);
+        }
+        else if(x.status === "closed"){
+            const p = pri(x.priority);
+            const div = document.createElement("div");
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5 h-full flex flex-col justify-between">
+                    <div class="flex justify-between items-center">
+                        <img src="assets/Closed- Status .png" alt="">
+                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px] s">${x.priority}</button>
+                    </div>
+                    <p class="font-semibold">${x.title}</p>
+                    <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
+                    <div>${add(x.labels)}</div>
+                    <hr class="text-gray-300">
+                    <p class="text-neutral/50 text-[12px]">${x.author}</p>
+                    <p class="text-neutral/50 text-[12px]">${x.createdAt}</p>
+                </div>`;
+
+            parentCard.appendChild(div);
+        }
+    });
+    kk();
+}
+
+let arr = [];
+
+const g = async () => {
+    const a = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+    const b = await a.json();
+    arr = b.data;
+    
+    parmanentcards(b.data);
+}
+g();
+
+
+function kk(){
+    const parentCard = document.querySelector(".card");
+    const total = document.querySelector(".total");
+
+    total.innerText = parentCard.children.length;
+}
+kk();
+
+
+const inputValueBtn = document.querySelector(".inputValueBtn");
+const search = () => {
+    const input = document.querySelector(".input-btn input");
+    const inputValue = input.value.trim().toLowerCase();
+    // console.log(inputValue);
+
+    let found = arr.filter(v => v.title.toLowerCase().includes(inputValue));
+
+    const parentCard = document.querySelector(".card");
+    parentCard.innerHTML = "";
+
+    found.forEach(x => {
+        if(x.status === "open"){
+            const p = pri(x.priority);
+            const div = document.createElement("div");
             div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
@@ -260,24 +333,12 @@ const parmanentcards = (v) => {
             parentCard.appendChild(div);
         }
     });
+    // console.log(found);
     kk();
-}
+};
+inputValueBtn.addEventListener("click",search);
 
-const g = async () => {
-    const a = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
-    const b = await a.json();
-    
-    parmanentcards(b.data);
-}
-g();
-
-
-function kk(){
-    const parentCard = document.querySelector(".card");
-    const total = document.querySelector(".total");
-
-    total.innerText = parentCard.children.length;
-}
-kk();
-
-
+const input = document.querySelector(".input-btn input");
+input.addEventListener("keydown",(e)=>{
+        search();
+})

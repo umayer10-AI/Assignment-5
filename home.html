@@ -16,11 +16,11 @@
             <a class="btn btn-ghost text-xl"><i class="fa-brands fa-github text-3xl"></i>GitHub Issues Tracker</a>
         </div>
         <div class="flex gap-3">
-            <label class="input input-bordered flex items-center gap-2">
+            <label class="input input-bordered flex items-center gap-2 input-btn">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" class="grow" placeholder="Search issues..." />
             </label>
-            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+            <button class="btn btn-primary inputValueBtn"><i class="fa-solid fa-plus"></i> New Issue</button>
         </div>
         </div>
     </header>
@@ -43,15 +43,17 @@
                 </div>
             </div>
             <div class="flex justify-center items-center gap-3">
-                <p><i class="fa-solid fa-circle text-green-600"></i>Open</p>
-                <p><i class="fa-solid fa-circle text-purple-600"></i>Closed</p>
+                <p><i class="fa-solid fa-circle text-green-600"></i> Open</p>
+                <p><i class="fa-solid fa-circle text-purple-600"></i> Closed</p>
             </div>
         </div>
     </section>
 
     <section class="max-w-[80%] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 card p-4 bg-base-700 shadow-md border border-gray-300">
-            
+            <div class="flex justify-center items-center col-span-full my-20">
+                <span class="loading loading-spinner loading-xl"></span>
+            </div>
         </div>
     </section>
 
