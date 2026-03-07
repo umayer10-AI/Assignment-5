@@ -16,3 +16,7 @@ Answer: 1. map() -> transform values and returns a new array.
 
 Answer: An arrow function is a shorter way to write functions in JavaScript using the => syntax. (ES6 version)
         Example: const sum = (a,b) => a+b;
+
+5️⃣ What are template literals?
+
+Answer: Template literals are backtick (`) strings in JavaScript that allow variable interpolation and multi-line text.
