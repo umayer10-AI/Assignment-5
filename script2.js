@@ -218,10 +218,10 @@ const add = (v) => {
             return `<button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[14px]"><i class="fa-solid fa-bug"></i><span class="font-semibold"> ${x}</span></button>`
         }
         else if(x === "help wanted"){
-            return `<button class="text-[#D97706] bg-[#FDE68A] px-4 rounded-full text-[14px]"><i class="fa-solid fa-bug"></i><span class="font-semibold"> ${x}</span></button>`
+            return `<button class="text-[#D97706] bg-[#FDE68A] px-4 rounded-full text-[14px]"><i class="fa-regular fa-life-ring"></i><span class="font-semibold"> ${x}</span></button>`
         }
         else{
-            return `<button class="text-[#00A96E] bg-[#BBF7D0] px-4 rounded-full text-[14px]"><i class="fa-solid fa-bug"></i><span class="font-semibold"> ${x}</span></button>`
+            return `<button class="text-[#00A96E] bg-[#BBF7D0] px-4 rounded-full text-[14px]"><i class="fa-solid fa-circle-dollar-to-slot"></i><span class="font-semibold"> ${x}</span></button>`
         }
     });
     return m.join(" ");
