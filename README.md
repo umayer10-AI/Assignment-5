@@ -11,3 +11,8 @@ Answer: The spread operator (...) is used to expand or copy elements or properti
 Answer: 1. map() -> transform values and returns a new array.
         2. filter() -> returns a new array based on a condition.
         3. forEach() -> just like normal loop no return values.
+
+4️⃣ What is an arrow function?
+
+Answer: An arrow function is a shorter way to write functions in JavaScript using the => syntax. (ES6 version)
+        Example: const sum = (a,b) => a+b;
