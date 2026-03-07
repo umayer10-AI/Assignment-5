@@ -2,22 +2,13 @@ let pri = (v) => {
     const s = document.querySelector(".s");
     console.log(s)
     if(v === "high"){
-        return {
-            text: "text-[#EF4444]",
-            bg: "bg-[#FEECEC]"
-        };
+        s.classList = "text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]";
     }
     else if(v === "medium"){
-        return {
-            text: "text-[#F59E0B]",
-            bg: "bg-[#FFF6D1]"
-        };;
+        s.classList = "text-[#D97706] bg-[#FDE68A] px-4 rounded-full text-[12px]";
     }
     else if(v === "low"){
-        return {
-            text: "text-[#9CA3AF]",
-            bg: "bg-[#EEEFF2]"
-        };
+        s.classList = "text-[#9CA3AF] bg-[#EEEFF2] px-4 rounded-full text-[12px]";
     }
 }
 
@@ -28,12 +19,11 @@ const allBtncard = (v) => {
 
      v.forEach(x => {
         if(x.status === "open"){
-            const p = pri(x.priority);
             const div = document.createElement("div");
             div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
-                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
+                        <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]">${x.priority}</button>
                     </div>
                     <p class="font-semibold">${x.title}</p>
                     <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
@@ -46,12 +36,11 @@ const allBtncard = (v) => {
             parentCard.appendChild(div);
         }
         else if(x.status === "closed"){
-            const p = pri(x.priority);
             const div = document.createElement("div");
             div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
-                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
+                        <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]">${x.priority}</button>
                     </div>
                     <p class="font-semibold">${x.title}</p>
                     <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
@@ -72,12 +61,11 @@ const openBtnCard = (v) => {
 
      v.forEach(x => {
         if(x.status === "open"){
-            const p = pri(x.priority);
             const div = document.createElement("div");
             div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
-                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
+                        <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]">${x.priority}</button>
                     </div>
                     <p class="font-semibold">${x.title}</p>
                     <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
@@ -98,13 +86,12 @@ const closeBtnCard = (v) => {
     parentCard.innerHTML = "";
 
      v.forEach(x => {
-        const p = pri(x.priority);
         if(x.status === "closed"){
             const div = document.createElement("div");
             div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
-                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
+                        <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]">${x.priority}</button>
                     </div>
                     <p class="font-semibold">${x.title}</p>
                     <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
@@ -170,12 +157,11 @@ const parmanentcards = (v) => {
 
     v.forEach(x => {
         if(x.status === "open"){
-            const p = pri(x.priority);
             const div = document.createElement("div");
             div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
-                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px] s">${x.priority}</button>
+                        <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px] s">${pri(x.priority)}</button>
                     </div>
                     <p class="font-semibold">${x.title}</p>
                     <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
@@ -188,12 +174,11 @@ const parmanentcards = (v) => {
             parentCard.appendChild(div);
         }
         else if(x.status === "closed"){
-            const p = pri(x.priority);
             const div = document.createElement("div");
             div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
-                        <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px] s">${x.priority}</button>
+                        <button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px] s">${pri(x.priority)}</button>
                     </div>
                     <p class="font-semibold">${x.title}</p>
                     <p class="line-clamp-2 text-neutral/50 text-[12px]">${x.description}</p>
@@ -223,7 +208,6 @@ function kk(){
     const total = document.querySelector(".total");
 
     total.innerText = parentCard.children.length;
+    // console.log(total)
 }
 kk();
-
-
