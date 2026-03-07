@@ -1,6 +1,48 @@
+let detailModal = (v) => {
+
+    const div = document.querySelector(".modal-box");
+    div.innerHTML = "";
+
+    const d = document.createElement("div");
+    const p = pri(v.status);
+    d.innerHTML = `<div class="space-y-4">
+            <h3 class="text-xl font-bold">${v.title}</h3>
+            <div class="flex gap-3 items-center">
+                <p class="text-[#ffffff] ${p.bg} rounded-full text-[14px] font-bold p-2">${p.name}</p>
+                <p class="text-neutral/50">● Opened by ${v.assignee}</p>
+                <p class="text-neutral/50">● ${v.createdAt}</p>
+            </div>
+            <div>${add(v.labels)}</div>
+            <p>${v.description}</p>
+            <div class="grid grid-cols-2 bg-gray-100 p-3 rounded-xl">
+                <div class="space-y-1">
+                    <p class="text-neutral/50">Assignee:</p>
+                    <p class="font-semibold">${v.assignee}</p>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-neutral/50">Priority:</p>
+                    <button class="font-semibold text-white bg-[#EF4444] rounded-full px-4 py-1">${v.priority}</button>
+                </div>
+            </div>
+            <div class="modal-action">
+            <form method="dialog">
+                <button class="btn btn-primary">Close</button>
+            </form>
+            </div>
+        </div>`;
+
+    div.appendChild(d);
+    document.querySelector("#my_modal").showModal();
+}
+
+let details = async (id) => {
+    const a = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const b = await a.json();
+    detailModal(b.data)
+}
+
+
 let pri = (v) => {
-    const s = document.querySelector(".s");
-    console.log(s)
     if(v === "high"){
         return {
             text: "text-[#EF4444]",
@@ -19,6 +61,18 @@ let pri = (v) => {
             bg: "bg-[#EEEFF2]"
         };
     }
+    else if(v === "open"){
+        return {
+            name: "Opened",
+            bg: "bg-[#00A96E]"
+        }
+    }
+    else if(v === "closed"){
+        return {
+            name: "Closed",
+            bg: "bg-[#EF4444]"
+        }
+    }
 }
 
 
@@ -30,7 +84,7 @@ const allBtncard = (v) => {
         if(x.status === "open"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
@@ -48,7 +102,7 @@ const allBtncard = (v) => {
         else if(x.status === "closed"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
@@ -74,7 +128,7 @@ const openBtnCard = (v) => {
         if(x.status === "open"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
@@ -101,7 +155,7 @@ const closeBtnCard = (v) => {
         const p = pri(x.priority);
         if(x.status === "closed"){
             const div = document.createElement("div");
-            div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px]">${x.priority}</button>
@@ -159,7 +213,7 @@ btnContainer.addEventListener("click",(e) => {
 })
 
 const add = (v) => {
-    let m = v.map(x => `<button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[12px]"><i class="fa-solid fa-bug"></i>${x}</button>`);
+    let m = v.map(x => `<button class="text-[#EF4444] bg-[#FEECEC] px-4 rounded-full text-[14px]"><i class="fa-solid fa-bug"></i><span class="font-semibold"> ${x}</span></button>`);
     return m.join(" ");
 }
 
@@ -172,7 +226,7 @@ const parmanentcards = (v) => {
         if(x.status === "open"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-green-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Open-Status.png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px] s">${x.priority}</button>
@@ -190,7 +244,7 @@ const parmanentcards = (v) => {
         else if(x.status === "closed"){
             const p = pri(x.priority);
             const div = document.createElement("div");
-            div.innerHTML = `<div class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
+            div.innerHTML = `<div onclick="details(${x.id})" class="space-y-2 bg-[#FFFFFF] p-3 shadow-lg rounded-lg border-2 border-purple-500 border-t-5">
                     <div class="flex justify-between items-center">
                         <img src="assets/Closed- Status .png" alt="">
                         <button class="${p.text} ${p.bg} px-4 rounded-full text-[12px] s">${x.priority}</button>
